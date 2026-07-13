@@ -1,0 +1,57 @@
+rules_version = '2';
+
+service firebase.storage {
+
+  match /b/{bucket}/o {
+
+
+    // Default deny
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+
+
+    // Public feed thumbnails
+    match /listings/{listingId}/thumbs/{fileName} {
+
+
+      // Responders can view thumbnails
+      allow read: if request.auth != null;
+
+
+      // Only backend creates thumbnails
+      allow write: if false;
+
+    }
+
+
+
+    // Original uploaded photos
+    match /listings/{listingId}/originals/{fileName} {
+
+
+      // Never expose originals directly
+      allow read: if false;
+
+
+      // Listing owner uploads originals
+      allow create, update: if request.auth != null
+        && request.resource.size <= 500 * 1024
+        && request.resource.contentType == "image/jpeg"
+        && firestore.get(
+          /databases/(default)/documents/listings/$(listingId)
+        ).data.ownerId == request.auth.uid;
+
+
+
+      // Listing owner deletes originals
+      allow delete: if request.auth != null
+        && firestore.get(
+          /databases/(default)/documents/listings/$(listingId)
+        ).data.ownerId == request.auth.uid;
+
+    }
+
+  }
+
+}

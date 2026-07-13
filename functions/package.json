@@ -1,0 +1,14 @@
+{
+  "name": "landclearanceapp-functions",
+  "description": "Cloud Functions for Land Clearance App",
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^13.1.0",
+    "firebase-functions": "^7.2.5",
+    "sharp": "^0.35.3"
+  },
+  "private": true
+}

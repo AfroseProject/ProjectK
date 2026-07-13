@@ -1,0 +1,17 @@
+{
+  "common": {
+    "appName": "Land Clearance Marketplace",
+    "continue": "Continue",
+    "contact": "Contact",
+    "submit": "Submit"
+  },
+  "auth": {
+    "login": "Login via Phone Number",
+    "phoneNumber": "Phone Number",
+    "enterOtp": "Enter OTP"
+  },
+  "roles": {
+    "landowner": "Landowner",
+    "responder": "Clearance Service / Buyer"
+  }
+}
