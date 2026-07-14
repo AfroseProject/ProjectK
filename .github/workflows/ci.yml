@@ -72,6 +72,9 @@ jobs:
       - name: Install Node Modules
         run: npm ci
 
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
       - name: Build Android Debug
         working-directory: android
         run: |
