@@ -1,5 +1,6 @@
 module.exports = {
   preset: 'react-native',
+
   testEnvironment: 'node',
 
   setupFilesAfterEnv: [
@@ -7,11 +8,15 @@ module.exports = {
     '@testing-library/jest-native/extend-expect',
   ],
 
+  moduleNameMapper: {
+    '^@react-native-firebase/(.*)$':
+      '<rootDir>/__mocks__/@react-native-firebase/$1.js',
+  },
+
   transformIgnorePatterns: [
     'node_modules/(?!(' +
       [
         '@react-native',
-        '@react-native-firebase',
         '@react-navigation',
         'react-native',
         'react-native-safe-area-context',
@@ -19,6 +24,6 @@ module.exports = {
         'react-native-gesture-handler',
         '@shopify/flash-list',
       ].join('|') +
-      ')/)',
+    ')/)',
   ],
 };
