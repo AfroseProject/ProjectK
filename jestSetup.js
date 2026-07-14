@@ -1,5 +1,25 @@
 /* eslint-env jest */
 
+jest.mock('@react-native-firebase/app', () =>
+  require('./__mocks__/@react-native-firebase/app')
+);
+
+jest.mock('@react-native-firebase/auth', () =>
+  require('./__mocks__/@react-native-firebase/auth')
+);
+
+jest.mock('@react-native-firebase/firestore', () =>
+  require('./__mocks__/@react-native-firebase/firestore')
+);
+
+jest.mock('@react-native-firebase/functions', () =>
+  require('./__mocks__/@react-native-firebase/functions')
+);
+
+jest.mock('@react-native-firebase/storage', () =>
+  require('./__mocks__/@react-native-firebase/storage')
+);
+
 jest.mock('@react-native-firebase/app');
 jest.mock('@react-native-firebase/auth');
 jest.mock('@react-native-firebase/firestore');
